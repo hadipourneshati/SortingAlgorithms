@@ -51,4 +51,17 @@ def counting_sort(L, minimum_item=None, maximum_item=None):
 
 
 def insertion_sort(L):
-    pass
+    L_size = len(L)
+    if L_size == 0:
+        return L
+    for i in range(1, L_size):
+        tmp = L[i]
+        x = i - 1
+        while x >= 0 and tmp < L[x]:
+            L[x + 1] = L[x]
+            x -= 1
+            
+    return L
+
+
+print(insertion_sort([8,4,9,2,3,4,7]))
