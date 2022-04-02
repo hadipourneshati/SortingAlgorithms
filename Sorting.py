@@ -64,3 +64,53 @@ def insertion_sort(L):
     return L
 
 
+def bubble_sort(L):
+    L_size = len(L)
+    if L_size == 0:
+        return L
+    for i in range(L_size):
+        swapped = False
+        for j in range(L_size - 1):
+            if L[j + 1] < L[j]:
+                L[j + 1], L[j] = L[j], L[j + 1]
+                swapped = True
+        print(L)
+        if not swapped:
+            break
+    return L
+
+
+def selection_sort(L):
+    L_size = len(L)
+    if L_size == 0:
+        return L
+    for i in range(L_size):
+        min_item = i
+        for j in range(i + 1, L_size):
+            if L[j] < L[min_item]:
+                min_item = j
+        if i != min_item:
+            L[i], L[min_item] = L[min_item], L[i]
+    return L
+
+
+def merge_sort(L):
+    if len(L) < 2:
+        return L
+    L1 = L[:len(L) // 2]
+    L2 = L[len(L) // 2:]
+    L1 = merge_sort(L1)
+    L2 = merge_sort(L2)
+
+    i = j = 0
+    L = []
+
+    while i < len(L1) and j < len(L2):
+        if L1[i] <= L2[j]:
+            L += [L1[i]]
+            i += 1
+        else:
+            L += [L2[j]]
+            j += 1
+    L += L1[i:] + L2[j:]
+    return L
