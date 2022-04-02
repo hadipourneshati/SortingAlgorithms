@@ -56,12 +56,11 @@ def insertion_sort(L):
         return L
     for i in range(1, L_size):
         tmp = L[i]
-        x = i - 1
-        while x >= 0 and tmp < L[x]:
-            L[x + 1] = L[x]
+        x = i
+        while x > 0 and L[x - 1] > tmp:
+            L[x] = L[x - 1]
             x -= 1
-            
+        L[x] = tmp
     return L
 
 
-print(insertion_sort([8,4,9,2,3,4,7]))
